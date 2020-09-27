@@ -27,4 +27,4 @@ while True:
             print("thanks for playing!! :)")
             break
     else:
-        print("please enter valid option")
+        print("please enter valid option!!")
