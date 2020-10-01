@@ -31,23 +31,26 @@ while attempts <= chances:  #loop until the chances are over
         print("🥳Good Job!🥳")
         break
     userIn = input("Guess the word: \n")[0]     #takes input from user and stores first character.
-    for i in range(len(Question)):      #Store correct indexes int SameLetter[]
-        if Question[i] == userIn:       #Checks input exists in the word
-            SameLetter.append(i)    
-    if len(SameLetter) > 0:         #checks letter is right
-        print("🎆Good Guess Keep Guessing!🎆")
-        for i in Question:      #to change the dash with correct letter
-            if (i == userIn):   #compares the element
-                for j in SameLetter:    #for same right letters
-                    blanks.insert(j,userIn)     #replacing the value
-                    blanks.pop(j+1)             #remove the dash    
-                    SameLetter.pop(0)           #remove the index value from SameLetter[]
-        print(blanks)                           #printing the remaining blanks
+    if userIn not in WrongGuess and userIn not in blanks:
+        for i in range(len(Question)):      #Store correct indexes int SameLetter[]
+            if Question[i] == userIn:       #Checks input exists in the word
+                SameLetter.append(i)    
+        if len(SameLetter) > 0:         #checks letter is right
+            print("🎆Good Guess Keep Guessing!🎆")
+            for i in Question:      #to change the dash with correct letter
+                if (i == userIn):   #compares the element
+                    for j in SameLetter:    #for same right letters
+                        blanks.insert(j,userIn)     #replacing the value
+                        blanks.pop(j+1)             #remove the dash    
+                        SameLetter.pop(0)           #remove the index value from SameLetter[]
+            print(blanks)                           #printing the remaining blanks
+        else:
+            WrongGuess.append(userIn)               #stores worng guess into WrongGuess[]
+            print("better luck Next time!")
+            print("you Wrong guesses are ",WrongGuess)
+            attempts+=1           #increments wrong attempts
     else:
-        WrongGuess.append(userIn)               #stores worng guess into WrongGuess[]
-        print("better luck Next time!")
-        print("you Wrong guesses are ",WrongGuess)
-        attempts+=1           #increments wrong attempts
+            print("Hey! You already guessed it!!!")
 print("You Guessed it right. The Right Answer is :",end="")
 for i in Question:
     print(i, end="")
