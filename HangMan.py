@@ -50,7 +50,7 @@ while attempts <= chances:  #loop until the chances are over
             print("you Wrong guesses are ",WrongGuess)
             attempts+=1           #increments wrong attempts
     else:
-            print("Hey! You already guessed it!!!")
+            print("Hey! You already guessed the letter ",userIn,"!!!")
 print("You Guessed it right. The Right Answer is :",end="")
 for i in Question:
     print(i, end="")
